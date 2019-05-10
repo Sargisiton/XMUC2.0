@@ -1,5 +1,6 @@
 #include<iostream>
 #include<cstdlib>
+#include"PCUI.h"
 using namespace std;
 void star(){
     cout<<"************************"<<endl;
@@ -33,6 +34,4 @@ class PersonalChoiceUI{//介面一的類別
                        break;//結束執行
             }
 
-
-        }
 };

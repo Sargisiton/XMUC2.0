@@ -22,15 +22,6 @@ class Record
 			cout<<"Inter your address:";getline(cin,address);
 			cout<<"Inter your age:";(cin>>age).get();
 		}
-		void basic_show_data(){
-            cout<<"Name:"<<name<<endl;
-            cout<<"Sex:"<<sex<<endl;
-            cout<<"Identity:"<<identity<<endl;
-            cout<<"Birthday:"<<birthday<<endl;
-            cout<<"Address:"<<address<<endl;
-            cout<<"Age:"<<age<<endl;
-
-		}
 };
 class studentNode:public Record{
     private:
@@ -47,15 +38,6 @@ class studentNode:public Record{
                     cout<<"Inter your major:";getline(cin,ma);
                     cout<<"Inter your grade:";(cin>>a).get();
                 }
-          void show_data(){
-                    cout<<"ID:"<<student_ID<<endl;
-                    cout<<"Dorm:"<<dorm<<endl;
-                    cout<<"Major:"<<major<<endl;
-                    cout<<"Grade:"<<grade<<endl;
-                }
-
-
-
          friend class Student;
 };
 

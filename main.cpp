@@ -2,7 +2,6 @@
 #include<cstdlib>
 #include"PCUI.h"
 using namespace std;
-
 int main(void){
     PersonalChoiceUI A;
     A.show();
