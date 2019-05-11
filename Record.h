@@ -1,45 +1,40 @@
-#include<iostream>
-#include<cstdlib>
-using namespace std;
-
 class Record
 {
 	protected:
-		string name;
+		std::string name;
 		char sex;
-		string identity;
-		string birthday;
-		string address;
+		std::string identity;
+		std::string birthday;
+		std::string address;
 		int age;
-    public:
-		void basic_get_data()
-		{
-
-			cout<<"Inter your Name:";getline(cin,name);
-			cout<<"Inter your Sex:";cin.get(sex);
-			cout<<"Inter your identity:";getline(cin,identity);
-			cout<<"Inter your birthday:";getline(cin,birthday);
-			cout<<"Inter your address:";getline(cin,address);
-			cout<<"Inter your age:";(cin>>age).get();
-		}
 };
-class studentNode:public Record{
+class StudentNode:public Record{
     private:
-		string student_ID;
-		string dorm;
-		string major;
+		std::string student_ID;
+		std::string dorm;
+		std::string major;
 		int grade;
-		StudentNode*next;
-	public:
-	     void get_data()
-                {   string stid;string dor;string ma;int a;
-                    cout<<"Inter your ID:";getline(cin,stid);
-                    cout<<"Inter your Dorm:";getline(cin,dor);
-                    cout<<"Inter your major:";getline(cin,ma);
-                    cout<<"Inter your grade:";(cin>>a).get();
-                }
-         friend class Student;
 };
+class Staff:public Record {
+	protected:
+		std::string job_number;
+		std::string apartment;
+		double work_time ;
+		double salary;
+};//: public Staff
+class Professor :public Staff{
+	protected:
+		std::string teach_major;
+		std::string science;
+		int num_of_student;
+};
+class Worker: public Staff{
+	protected:
+		std::string type_of_work;
+		Worker*next;
+};
+
+
 
 
 

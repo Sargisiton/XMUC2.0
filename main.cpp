@@ -1,12 +1,16 @@
 #include<iostream>
 #include<cstdlib>
+#include<vector>
+#include"AUI.h"
 #include"PCUI.h"
+#include"Record.h"
 using namespace std;
-int main(void){
+
+
+
+int main(){
     PersonalChoiceUI A;
-    A.show();
-    A.choice();
-    A.dective();
+    A.EXECUTEPCUI();
+
     return 0;
 }
-

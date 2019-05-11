@@ -31,9 +31,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="AUI.cpp" />
+		<Unit filename="AUI.h" />
+		<Unit filename="PCUI.cpp" />
 		<Unit filename="PCUI.h" />
 		<Unit filename="Record.h" />
-		<Unit filename="Student.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
