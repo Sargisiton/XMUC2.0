@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<vector>
-#include"AUI.h"
+#include<fstream>
 #include"PCUI.h"
 #include"Record.h"
 using namespace std;
@@ -14,3 +14,11 @@ int main(){
 
     return 0;
 }
+
+
+
+extern void star(){
+    cout<<"************************"<<endl;
+}
+
+

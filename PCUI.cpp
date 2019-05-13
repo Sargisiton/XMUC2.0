@@ -3,14 +3,10 @@
 #include"PCUI.h"
 #include"AUI.h"
 #include"Record.h"
-#include<vector>
+#include<fstream>
 using namespace std;
-vector<StudentNode>B;
-vector<Professor>C;
-vector<Worker>D;
-extern void star(){
-    cout<<"************************"<<endl;
-}
+fstream Stu,Pro,Wor;
+void star();
 void PersonalChoiceUI::show(){
         cout<<"1.Student"<<endl;
         cout<<"2.Professor"<<endl;
@@ -22,14 +18,23 @@ void PersonalChoiceUI::choice(){
         (cin>>a).get();cout<<endl;
         star();
 }
+Student B;
+Professor C;
+Worker D;
 void PersonalChoiceUI::dective(){
         switch(a){
-            case 1:cout<<"EXECUTE student ability."<<endl;AbilityUI E;E.EXECUTEPCUI();
-                    break;//創建各類別鏈表
-            case 2:cout<<"EXECUTE professor ability."<<endl;AbilityUI F;F.EXECUTEPCUI();
-                    break;
-            case 3:cout<<"EXECUTE worker ability."<<endl;AbilityUI G;G.EXECUTEPCUI();
-                    break;
+            case 1:cout<<"EXECUTE student ability."<<endl;
+                   B.EXECUTEPCUI();
+                   B.dective();
+                   break;//創建各類別鏈表
+            case 2:cout<<"EXECUTE professor ability."<<endl;
+                   C.EXECUTEPCUI();
+                   C.dective();
+                   break;
+            case 3:cout<<"EXECUTE worker ability."<<endl;
+                   D.EXECUTEPCUI();
+                   D.dective();
+                   break;
             case 4:cout<<"Thank you to use this system."<<endl;system("pause");return ;
                     break;//結束執行
         }
