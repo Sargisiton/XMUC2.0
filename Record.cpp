@@ -220,6 +220,78 @@ void Worker::out_file(){
     }
     else{cout<<"It is error."<<endl;}
 }
+void Student::find_inf(){
+    string stu_ID;
+    cout<<"Please into Stu_ID:";cin>>stu_ID;
+    star();
+    fstream ffile;
+    ffile.open("Student.dat",ios::in|ios::out|ios::binary|ios::app);
+    int index=0;
+    do{ ffile.read((char*)&this->name,sizeof(this->name));
+        ffile.read((char*)&this->sex,sizeof(this->sex));
+        ffile.read((char*)&this->identity,sizeof(this->identity));
+        ffile.read((char*)&this->birthday,sizeof(this->birthday));
+        ffile.read((char*)&this->address,sizeof(this->address));
+        ffile.read((char*)&this->age,sizeof(this->age));
+        ffile.read((char*)&this->student_ID,sizeof(this->student_ID));
+        ffile.read((char*)&this->dorm,sizeof(this->dorm));
+        ffile.read((char*)&this->major,sizeof(this->major));
+        ffile.read((char*)&this->grade,sizeof(this->grade));
+        if(stu_ID==this->identity)
+        {show_data();star();}
+        else{index++;}
+    }while(!ffile.eof());
+}
+void Professor::find_inf(){
+    string pro_ID;
+    cout<<"Please into pro_ID:";cin>>pro_ID;
+    star();
+    fstream ffile;
+    ffile.open("professor.dat",ios::in|ios::out|ios::binary|ios::app);
+    int index=0;
+    do{ ffile.read((char*)&this->name,sizeof(this->name));
+        ffile.read((char*)&this->sex,sizeof(this->sex));
+        ffile.read((char*)&this->identity,sizeof(this->identity));
+        ffile.read((char*)&this->birthday,sizeof(this->birthday));
+        ffile.read((char*)&this->address,sizeof(this->address));
+        ffile.read((char*)&this->age,sizeof(this->age));
+        ffile.read((char*)&this->job_number,sizeof(this->job_number));
+        ffile.read((char*)&this->apartment,sizeof(this->apartment));
+        ffile.read((char*)&this->work_time,sizeof(this->work_time));
+        ffile.read((char*)&this->salary,sizeof(this->salary));
+        ffile.read((char*)&this->teach_major,sizeof(this->teach_major));
+        ffile.read((char*)&this->science,sizeof(this->science));
+        ffile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
+        if(pro_ID==this->identity)
+        {show_data();star();}
+        else{index++;}
+    }while(!ffile.eof());
+
+
+}
+void Worker::find_inf(){
+    string wor_ID;
+    cout<<"Please into wor_ID:";cin>>wor_ID;
+    star();
+    fstream ffile;
+    ffile.open("worker.dat",ios::in|ios::out|ios::binary|ios::app);
+    int index=0;
+    do{ ffile.read((char*)&this->name,sizeof(this->name));
+        ffile.read((char*)&this->sex,sizeof(this->sex));
+        ffile.read((char*)&this->identity,sizeof(this->identity));
+        ffile.read((char*)&this->birthday,sizeof(this->birthday));
+        ffile.read((char*)&this->address,sizeof(this->address));
+        ffile.read((char*)&this->age,sizeof(this->age));
+        ffile.read((char*)&this->job_number,sizeof(this->job_number));
+        ffile.read((char*)&this->apartment,sizeof(this->apartment));
+        ffile.read((char*)&this->work_time,sizeof(this->work_time));
+        ffile.read((char*)&this->salary,sizeof(this->salary));
+        ffile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
+        if(wor_ID==this->identity)
+        {show_data();star();}
+        else{index++;}
+    }while(!ffile.eof());
+}
 void Student::dective(){
        switch(b){
                 case 1:cout<<"EXECUTE Add."<<endl;
@@ -233,16 +305,17 @@ void Student::dective(){
                        this->dective();
                         break;//尋訪輸出
                 case 3:cout<<"EXECUTE Fix."<<endl;
-                        AbilityUI the_next3;
-                        the_next3.EXECUTEPCUI();
+                        this->EXECUTEPCUI();
+                        this->dective();
                         break;//修資料
                 case 4:cout<<"EXECUTE Delete."<<endl;
                         AbilityUI the_next4;
                         the_next4.EXECUTEPCUI();
                         break;//刪節點
                 case 5:cout<<"EXECUTE Find."<<endl;
-                        AbilityUI the_next5;
-                        the_next5.EXECUTEPCUI();
+                        this->find_inf();
+                        this->EXECUTEPCUI();
+                        this->dective();
                        break;//找節點
                 case 6:cout<<"Return menu1"<<endl;PersonalChoiceUI the_next;the_next.EXECUTEPCUI();
                        break;//回頁面一
@@ -269,8 +342,9 @@ void Professor::dective(){
                             the_next4.EXECUTEPCUI();
                             break;//刪節點
                     case 5:cout<<"EXECUTE Find."<<endl;
-                            AbilityUI the_next5;
-                            the_next5.EXECUTEPCUI();
+                            this->find_inf();
+                            this->EXECUTEPCUI();
+                            this->dective();
                            break;//找節點
                     case 6:cout<<"Return menu1"<<endl;PersonalChoiceUI the_next;the_next.EXECUTEPCUI();
                            break;//回頁面一
@@ -298,8 +372,9 @@ void Worker::dective(){
                             the_next4.EXECUTEPCUI();
                             break;//刪節點
                     case 5:cout<<"EXECUTE Find."<<endl;
-                            AbilityUI the_next5;
-                            the_next5.EXECUTEPCUI();
+                            this->find_inf();
+                            this->EXECUTEPCUI();
+                            this->dective();
                            break;//找節點
                     case 6:cout<<"Return menu1"<<endl;PersonalChoiceUI the_next;the_next.EXECUTEPCUI();
                            break;//回頁面一

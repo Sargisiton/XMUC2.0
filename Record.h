@@ -18,7 +18,6 @@ class Record:public AbilityUI
         Record(){}
         void basic_get_data();
         void basic_show_data();
-        Record& operator==(const Record&the_other);
 };
 class Student:public Record{
     protected:
@@ -33,7 +32,7 @@ class Student:public Record{
         void into_file();
         void dective();
         void out_file();
-        void close_file();
+        void find_inf();
 
 
 };
@@ -60,6 +59,7 @@ class Professor :public Staff{
         void show_data();
         void into_file();
         void out_file();
+        void find_inf();
 };
 class Worker: public Staff{
 	protected:
@@ -71,6 +71,7 @@ class Worker: public Staff{
         void show_data();
         void into_file();
         void out_file();
+        void find_inf();
 };
 
 
