@@ -3,7 +3,7 @@
 #include<cstdlib>
 #include"PCUI.h"
 #include"Record.h"
-
+void star();
 using namespace std;
 void Record::basic_get_data(){
     cout<<"Inter your Name:";(cin>>name).get();
@@ -89,11 +89,13 @@ void Student::into_file(){
         stufile.write((char*)&this->dorm,sizeof(this->dorm));
         stufile.write((char*)&this->major,sizeof(this->major));
         stufile.write((char*)&this->grade,sizeof(this->grade));
+        stufile.close();
+        star();
     }
     else{
         cout<<"it is error."<<endl;
     }
-    stufile.close();
+
 }
 void Professor::into_file(){
     ofstream profile;
@@ -114,11 +116,13 @@ void Professor::into_file(){
         profile.write((char*)&this->teach_major,sizeof(this->teach_major));
         profile.write((char*)&this->science,sizeof(this->science));
         profile.write((char*)&this->num_of_student,sizeof(this->num_of_student));
+        profile.close();
+        star();
     }
     else{
         cout<<"it is error."<<endl;
     }
-    profile.close();
+
 }
 void Worker::into_file(){
 
@@ -138,11 +142,83 @@ void Worker::into_file(){
         worfile.write((char*)&this->work_time,sizeof(this->work_time));
         worfile.write((char*)&this->salary,sizeof(this->salary));
         worfile.write((char*)&this->type_of_work,sizeof(this->type_of_work));
+        star();
+        worfile.close();
     }
     else{
         cout<<"it is error."<<endl;
     }
-    worfile.close();
+
+}
+void Student::out_file(){
+    ifstream stufile;
+    stufile.open("student.dat",ios::binary|ios::in|ios::app);
+    if(stufile.is_open()){
+            while(!stufile.eof()){
+                stufile.read((char*)&this->name,sizeof(this->name));
+                stufile.read((char*)&this->sex,sizeof(this->sex));
+                stufile.read((char*)&this->identity,sizeof(this->identity));
+                stufile.read((char*)&this->birthday,sizeof(this->birthday));
+                stufile.read((char*)&this->address,sizeof(this->address));
+                stufile.read((char*)&this->age,sizeof(this->age));
+                stufile.read((char*)&this->student_ID,sizeof(this->student_ID));
+                stufile.read((char*)&this->dorm,sizeof(this->dorm));
+                stufile.read((char*)&this->major,sizeof(this->major));
+                stufile.read((char*)&this->grade,sizeof(this->grade));
+                this->show_data();
+                star();
+            }
+            stufile.close();
+    }
+    else{cout<<"It is error."<<endl;}
+}
+void Professor::out_file(){
+    ifstream profile;
+    profile.open("professor.dat",ios::binary|ios::in|ios::app);
+    if(profile.is_open()){
+            while(!profile.eof()){
+                profile.read((char*)&this->name,sizeof(this->name));
+                profile.read((char*)&this->sex,sizeof(this->sex));
+                profile.read((char*)&this->identity,sizeof(this->identity));
+                profile.read((char*)&this->birthday,sizeof(this->birthday));
+                profile.read((char*)&this->address,sizeof(this->address));
+                profile.read((char*)&this->age,sizeof(this->age));
+                profile.read((char*)&this->job_number,sizeof(this->job_number));
+                profile.read((char*)&this->apartment,sizeof(this->apartment));
+                profile.read((char*)&this->work_time,sizeof(this->work_time));
+                profile.read((char*)&this->salary,sizeof(this->salary));
+                profile.read((char*)&this->teach_major,sizeof(this->teach_major));
+                profile.read((char*)&this->science,sizeof(this->science));
+                profile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
+                this->show_data();
+                star();
+            }
+            profile.close();
+    }
+    else{cout<<"It is error."<<endl;}
+}
+void Worker::out_file(){
+    ifstream worfile;
+    worfile.open("worker.dat",ios::binary|ios::in|ios::app);
+    if(worfile.is_open()){
+            while(!worfile.eof()){
+                worfile.read((char*)&this->name,sizeof(this->name));
+                worfile.read((char*)&this->sex,sizeof(this->sex));
+                worfile.read((char*)&this->identity,sizeof(this->identity));
+                worfile.read((char*)&this->birthday,sizeof(this->birthday));
+                worfile.read((char*)&this->address,sizeof(this->address));
+                worfile.read((char*)&this->age,sizeof(this->age));
+                worfile.read((char*)&this->job_number,sizeof(this->job_number));
+                worfile.read((char*)&this->apartment,sizeof(this->apartment));
+                worfile.read((char*)&this->work_time,sizeof(this->work_time));
+                worfile.read((char*)&this->salary,sizeof(this->salary));
+                worfile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
+                this->show_data();
+                star();
+            }
+            worfile.close();
+    }
+    else{cout<<"It is error."<<endl;}
 }
 void Student::dective(){
        switch(b){
@@ -152,8 +228,9 @@ void Student::dective(){
                         this->dective();
                         break;//增節點
                 case 2:cout<<"EXECUTE Show."<<endl;
-                        AbilityUI the_next2;
-                        the_next2.EXECUTEPCUI();
+                       this->out_file();
+                       this->EXECUTEPCUI();
+                       this->dective();
                         break;//尋訪輸出
                 case 3:cout<<"EXECUTE Fix."<<endl;
                         AbilityUI the_next3;
@@ -179,8 +256,9 @@ void Professor::dective(){
                             this->dective();
                             break;//增節點
                     case 2:cout<<"EXECUTE Show."<<endl;
-                            AbilityUI the_next2;
-                            the_next2.EXECUTEPCUI();
+                            this->out_file();
+                            this->EXECUTEPCUI();
+                            this->dective();
                             break;//尋訪輸出
                     case 3:cout<<"EXECUTE Fix."<<endl;
                             AbilityUI the_next3;
@@ -207,8 +285,9 @@ void Worker::dective(){
                             this->dective();
                             break;//增節點
                     case 2:cout<<"EXECUTE Show."<<endl;
-                            AbilityUI the_next2;
-                            the_next2.EXECUTEPCUI();
+                            this->out_file();
+                            this->EXECUTEPCUI();
+                            this->dective();
                             break;//尋訪輸出
                     case 3:cout<<"EXECUTE Fix."<<endl;
                             AbilityUI the_next3;
