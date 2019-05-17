@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<cstdlib>
+#include<vector>
 #include"PCUI.h"
 #include"Record.h"
 void star();
@@ -75,10 +76,9 @@ void Worker::show_data(){
 
 void Student::into_file(){
     ofstream stufile;
-    stufile.open("Student.dat",ios::binary|ios::app);
+    stufile.open("student.dat",ios::binary|ios::app);
     this->get_data();
     if(stufile.is_open()){
-        cout<<"N"<<endl;
         stufile.write((char*)&this->name,sizeof(this->name));
         stufile.write((char*)&this->sex,sizeof(this->sex));
         stufile.write((char*)&this->identity,sizeof(this->identity));
@@ -102,7 +102,6 @@ void Professor::into_file(){
     profile.open("professor.dat",ios::binary|ios::app);
     this->get_data();
     if(profile.is_open()){
-        cout<<"N"<<endl;
         profile.write((char*)&this->name,sizeof(this->name));
         profile.write((char*)&this->sex,sizeof(this->sex));
         profile.write((char*)&this->identity,sizeof(this->identity));
@@ -130,7 +129,6 @@ void Worker::into_file(){
     worfile.open("worker.dat",ios::binary|ios::app);
     this->get_data();
     if(worfile.is_open()){
-        cout<<"N"<<endl;
         worfile.write((char*)&this->name,sizeof(this->name));
         worfile.write((char*)&this->sex,sizeof(this->sex));
         worfile.write((char*)&this->identity,sizeof(this->identity));
@@ -165,7 +163,8 @@ void Student::out_file(){
                 stufile.read((char*)&this->dorm,sizeof(this->dorm));
                 stufile.read((char*)&this->major,sizeof(this->major));
                 stufile.read((char*)&this->grade,sizeof(this->grade));
-                this->show_data();
+                if(!stufile.eof()){this->show_data();}
+                else{break;}
                 star();
             }
             stufile.close();
@@ -190,7 +189,8 @@ void Professor::out_file(){
                 profile.read((char*)&this->teach_major,sizeof(this->teach_major));
                 profile.read((char*)&this->science,sizeof(this->science));
                 profile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
-                this->show_data();
+                if(!profile.eof()){this->show_data();}
+                else{break;}
                 star();
             }
             profile.close();
@@ -213,7 +213,8 @@ void Worker::out_file(){
                 worfile.read((char*)&this->work_time,sizeof(this->work_time));
                 worfile.read((char*)&this->salary,sizeof(this->salary));
                 worfile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
-                this->show_data();
+                if(!worfile.eof()){this->show_data();}
+                else{break;}
                 star();
             }
             worfile.close();
@@ -225,7 +226,7 @@ void Student::find_inf(){
     cout<<"Please into Stu_ID:";cin>>stu_ID;
     star();
     fstream ffile;
-    ffile.open("Student.dat",ios::in|ios::out|ios::binary|ios::app);
+    ffile.open("student.dat",ios::in|ios::out|ios::binary|ios::app);
     int index=0;
     do{ ffile.read((char*)&this->name,sizeof(this->name));
         ffile.read((char*)&this->sex,sizeof(this->sex));
@@ -238,7 +239,10 @@ void Student::find_inf(){
         ffile.read((char*)&this->major,sizeof(this->major));
         ffile.read((char*)&this->grade,sizeof(this->grade));
         if(stu_ID==this->identity)
-        {show_data();star();}
+        {if(!ffile.eof())
+        {show_data();}
+        else{break;}
+        star();}
         else{index++;}
     }while(!ffile.eof());
 }
@@ -263,7 +267,9 @@ void Professor::find_inf(){
         ffile.read((char*)&this->science,sizeof(this->science));
         ffile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
         if(pro_ID==this->identity)
-        {show_data();star();}
+        {if(!ffile.eof()){show_data();}
+        else{break;}
+        star();}
         else{index++;}
     }while(!ffile.eof());
 
@@ -288,31 +294,120 @@ void Worker::find_inf(){
         ffile.read((char*)&this->salary,sizeof(this->salary));
         ffile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
         if(wor_ID==this->identity)
-        {show_data();star();}
-        else{index++;}
+        {if(!ffile.eof()){show_data();}
+        else{break;}
+        star();}
     }while(!ffile.eof());
+}
+void Student::fix_inf(){
+    vector<Student> students;
+    fstream stufile;
+    stufile.open("student.dat",ios::binary|ios::in|ios::app);
+    if(stufile.is_open()){
+            while(!stufile.eof()){
+                Student C;
+                stufile.read((char*)&this->name,sizeof(this->name));
+                stufile.read((char*)&this->sex,sizeof(this->sex));
+                stufile.read((char*)&this->identity,sizeof(this->identity));
+                stufile.read((char*)&this->birthday,sizeof(this->birthday));
+                stufile.read((char*)&this->address,sizeof(this->address));
+                stufile.read((char*)&this->age,sizeof(this->age));
+                stufile.read((char*)&this->student_ID,sizeof(this->student_ID));
+                stufile.read((char*)&this->dorm,sizeof(this->dorm));
+                stufile.read((char*)&this->major,sizeof(this->major));
+                stufile.read((char*)&this->grade,sizeof(this->grade));
+                if(!stufile.eof()){
+                    C.name=this->name;
+                    C.sex=this->sex;
+                    C.identity=this->identity;
+                    C.birthday=this->birthday;
+                    C.address=this->address;
+                    C.age=this->age;
+                    C.student_ID=this->student_ID;
+                    C.dorm=this->dorm;
+                    C.major=this->major;
+                    C.grade=this->grade;
+                    }
+                else{break;}
+                C.show_data();
+                students.push_back(C);
+                star();
+            }
+            stufile.close();
+            star();
+    }
+    else{cout<<"It is error."<<endl;}
+    stufile.open("student.dat",ios::binary|ios::out);
+    stufile.close();
+    string stu_ID;
+    cout<<"Please input your id which you want to fix:";cin>>stu_ID;
+    cout<<"Input what you want to fix->"<<endl;
+    Student Fix;
+    Fix.get_data();
+    stufile.open("student.dat",ios::binary|ios::app);
+    for(vector<Student>::iterator s1=students.begin();s1!=students.end();s1++){
+        Student C;
+        C=*s1;
+        C.show_data();
+        if(stufile.is_open()){
+            if(C.identity==stu_ID){
+                C.name=Fix.name;
+                C.sex=Fix.sex;
+                C.identity=Fix.identity;
+                C.birthday=Fix.birthday;
+                C.address=Fix.address;
+                C.age=Fix.age;
+                C.student_ID=Fix.student_ID;
+                C.dorm=Fix.dorm;
+                C.major=Fix.major;
+                C.grade=Fix.grade;
+            }
+                C.show_data();
+                stufile.write((char*)&C.name,sizeof(C.name));
+                stufile.write((char*)&C.sex,sizeof(C.sex));
+                stufile.write((char*)&C.identity,sizeof(C.identity));
+                stufile.write((char*)&C.birthday,sizeof(C.birthday));
+                stufile.write((char*)&C.address,sizeof(C.address));
+                stufile.write((char*)&C.age,sizeof(C.age));
+                stufile.write((char*)&C.student_ID,sizeof(C.student_ID));
+                stufile.write((char*)&C.dorm,sizeof(C.dorm));
+                stufile.write((char*)&C.major,sizeof(C.major));
+                stufile.write((char*)&C.grade,sizeof(C.grade));
+                star();
+            }
+            else{
+                cout<<"it is error."<<endl;
+        }
+        stufile.close();
+    }
 }
 void Student::dective(){
        switch(b){
                 case 1:cout<<"EXECUTE Add."<<endl;
+                        star();
                         this->into_file();
                         this->EXECUTEPCUI();
                         this->dective();
                         break;//增節點
                 case 2:cout<<"EXECUTE Show."<<endl;
+                        star();
                        this->out_file();
                        this->EXECUTEPCUI();
                        this->dective();
                         break;//尋訪輸出
                 case 3:cout<<"EXECUTE Fix."<<endl;
+                        star();
+                        this->fix_inf();
                         this->EXECUTEPCUI();
                         this->dective();
                         break;//修資料
                 case 4:cout<<"EXECUTE Delete."<<endl;
+                        star();
                         AbilityUI the_next4;
                         the_next4.EXECUTEPCUI();
                         break;//刪節點
                 case 5:cout<<"EXECUTE Find."<<endl;
+                        star();
                         this->find_inf();
                         this->EXECUTEPCUI();
                         this->dective();
@@ -324,24 +419,29 @@ void Student::dective(){
 void Professor::dective(){
     switch(b){
                     case 1:cout<<"EXECUTE Add."<<endl;
+                            star();
                             this->into_file();
                             this->EXECUTEPCUI();
                             this->dective();
                             break;//增節點
                     case 2:cout<<"EXECUTE Show."<<endl;
+                            star();
                             this->out_file();
                             this->EXECUTEPCUI();
                             this->dective();
                             break;//尋訪輸出
                     case 3:cout<<"EXECUTE Fix."<<endl;
+                            star();
                             AbilityUI the_next3;
                             the_next3.EXECUTEPCUI();
                             break;//修資料
                     case 4:cout<<"EXECUTE Delete."<<endl;
+                            star();
                             AbilityUI the_next4;
                             the_next4.EXECUTEPCUI();
                             break;//刪節點
                     case 5:cout<<"EXECUTE Find."<<endl;
+                            star();
                             this->find_inf();
                             this->EXECUTEPCUI();
                             this->dective();
@@ -354,24 +454,29 @@ void Professor::dective(){
 void Worker::dective(){
     switch(b){
                     case 1:cout<<"EXECUTE Add."<<endl;
+                            star();
                             this->into_file();
                             this->EXECUTEPCUI();
                             this->dective();
                             break;//增節點
                     case 2:cout<<"EXECUTE Show."<<endl;
+                            star();
                             this->out_file();
                             this->EXECUTEPCUI();
                             this->dective();
                             break;//尋訪輸出
                     case 3:cout<<"EXECUTE Fix."<<endl;
+                            star();
                             AbilityUI the_next3;
                             the_next3.EXECUTEPCUI();
                             break;//修資料
                     case 4:cout<<"EXECUTE Delete."<<endl;
+                            star();
                             AbilityUI the_next4;
                             the_next4.EXECUTEPCUI();
                             break;//刪節點
                     case 5:cout<<"EXECUTE Find."<<endl;
+                            star();
                             this->find_inf();
                             this->EXECUTEPCUI();
                             this->dective();

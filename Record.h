@@ -33,7 +33,7 @@ class Student:public Record{
         void dective();
         void out_file();
         void find_inf();
-
+        void fix_inf();
 
 };
 class Staff:public Record {
