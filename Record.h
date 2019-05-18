@@ -34,6 +34,7 @@ class Student:public Record{
         void out_file();
         void find_inf();
         void fix_inf();
+        void delete_one();
 
 };
 class Staff:public Record {
@@ -60,6 +61,8 @@ class Professor :public Staff{
         void into_file();
         void out_file();
         void find_inf();
+        void fix_inf();
+        void delete_one();
 };
 class Worker: public Staff{
 	protected:
@@ -72,6 +75,8 @@ class Worker: public Staff{
         void into_file();
         void out_file();
         void find_inf();
+        void fix_inf();
+        void delete_one();
 };
 
 
