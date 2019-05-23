@@ -77,19 +77,19 @@ void Worker::show_data(){
 
 void Student::into_file(){
     ofstream stufile;
-    stufile.open("student.dat",ios::binary|ios::app);
+    stufile.open("student.txt",ios::app);
     this->get_data();
     if(stufile.is_open()){
-        stufile.write((char*)&this->name,sizeof(this->name));
-        stufile.write((char*)&this->sex,sizeof(this->sex));
-        stufile.write((char*)&this->identity,sizeof(this->identity));
-        stufile.write((char*)&this->birthday,sizeof(this->birthday));
-        stufile.write((char*)&this->address,sizeof(this->address));
-        stufile.write((char*)&this->age,sizeof(this->age));
-        stufile.write((char*)&this->student_ID,sizeof(this->student_ID));
-        stufile.write((char*)&this->dorm,sizeof(this->dorm));
-        stufile.write((char*)&this->major,sizeof(this->major));
-        stufile.write((char*)&this->grade,sizeof(this->grade));
+        stufile<<this->name;stufile<<endl;
+        stufile<<this->sex;stufile<<endl;
+        stufile<<this->identity;stufile<<endl;
+        stufile<<this->birthday;stufile<<endl;
+        stufile<<this->address;stufile<<endl;
+        stufile<<this->age;stufile<<endl;
+        stufile<<this->student_ID;stufile<<endl;
+        stufile<<this->dorm;stufile<<endl;
+        stufile<<this->major;stufile<<endl;
+        stufile<<this->grade;stufile<<endl;
         stufile.close();
         star();
     }
@@ -100,22 +100,22 @@ void Student::into_file(){
 }
 void Professor::into_file(){
     ofstream profile;
-    profile.open("professor.dat",ios::binary|ios::app);
+    profile.open("professor.txt",ios::app);
     this->get_data();
     if(profile.is_open()){
-        profile.write((char*)&this->name,sizeof(this->name));
-        profile.write((char*)&this->sex,sizeof(this->sex));
-        profile.write((char*)&this->identity,sizeof(this->identity));
-        profile.write((char*)&this->birthday,sizeof(this->birthday));
-        profile.write((char*)&this->address,sizeof(this->address));
-        profile.write((char*)&this->age,sizeof(this->age));
-        profile.write((char*)&this->job_number,sizeof(this->job_number));
-        profile.write((char*)&this->apartment,sizeof(this->apartment));
-        profile.write((char*)&this->work_time,sizeof(this->work_time));
-        profile.write((char*)&this->salary,sizeof(this->salary));
-        profile.write((char*)&this->teach_major,sizeof(this->teach_major));
-        profile.write((char*)&this->science,sizeof(this->science));
-        profile.write((char*)&this->num_of_student,sizeof(this->num_of_student));
+        profile<<this->name;profile<<endl;
+        profile<<this->sex;profile<<endl;
+        profile<<this->identity;profile<<endl;
+        profile<<this->birthday;profile<<endl;
+        profile<<this->address;profile<<endl;
+        profile<<this->age;profile<<endl;
+        profile<<this->job_number;profile<<endl;
+        profile<<this->apartment;profile<<endl;
+        profile<<this->work_time;profile<<endl;
+        profile<<this->salary;profile<<endl;
+        profile<<this->teach_major;profile<<endl;
+        profile<<this->science;profile<<endl;
+        profile<<this->num_of_student;profile<<endl;
         profile.close();
         star();
     }
@@ -127,20 +127,20 @@ void Professor::into_file(){
 void Worker::into_file(){
 
     ofstream worfile;
-    worfile.open("worker.dat",ios::binary|ios::app);
+    worfile.open("worker.txt",ios::app);
     this->get_data();
     if(worfile.is_open()){
-        worfile.write((char*)&this->name,sizeof(this->name));
-        worfile.write((char*)&this->sex,sizeof(this->sex));
-        worfile.write((char*)&this->identity,sizeof(this->identity));
-        worfile.write((char*)&this->birthday,sizeof(this->birthday));
-        worfile.write((char*)&this->address,sizeof(this->address));
-        worfile.write((char*)&this->age,sizeof(this->age));
-        worfile.write((char*)&this->job_number,sizeof(this->job_number));
-        worfile.write((char*)&this->apartment,sizeof(this->apartment));
-        worfile.write((char*)&this->work_time,sizeof(this->work_time));
-        worfile.write((char*)&this->salary,sizeof(this->salary));
-        worfile.write((char*)&this->type_of_work,sizeof(this->type_of_work));
+        worfile<<this->name;worfile<<endl;
+        worfile<<this->sex;worfile<<endl;
+        worfile<<this->identity;worfile<<endl;
+        worfile<<this->birthday;worfile<<endl;
+        worfile<<this->address;worfile<<endl;
+        worfile<<this->age;worfile<<endl;
+        worfile<<this->job_number;worfile<<endl;
+        worfile<<this->apartment;worfile<<endl;
+        worfile<<this->work_time;worfile<<endl;
+        worfile<<this->salary;worfile<<endl;
+        worfile<<this->type_of_work;worfile<<endl;
         star();
         worfile.close();
     }
@@ -151,19 +151,19 @@ void Worker::into_file(){
 }
 void Student::out_file(){
     ifstream stufile;
-    stufile.open("student.dat",ios::binary|ios::in|ios::app);
+    stufile.open("student.txt",ios::in);
     if(stufile.is_open()){
             while(!stufile.eof()){
-                stufile.read((char*)&this->name,sizeof(this->name));
-                stufile.read((char*)&this->sex,sizeof(this->sex));
-                stufile.read((char*)&this->identity,sizeof(this->identity));
-                stufile.read((char*)&this->birthday,sizeof(this->birthday));
-                stufile.read((char*)&this->address,sizeof(this->address));
-                stufile.read((char*)&this->age,sizeof(this->age));
-                stufile.read((char*)&this->student_ID,sizeof(this->student_ID));
-                stufile.read((char*)&this->dorm,sizeof(this->dorm));
-                stufile.read((char*)&this->major,sizeof(this->major));
-                stufile.read((char*)&this->grade,sizeof(this->grade));
+                stufile>>this->name;
+                stufile>>this->sex;
+                stufile>>this->identity;
+                stufile>>this->birthday;
+                stufile>>this->address;
+                stufile>>this->age;
+                stufile>>this->student_ID;
+                stufile>>this->dorm;
+                stufile>>this->major;
+                stufile>>this->grade;
                 if(!stufile.eof()){this->show_data();}
                 else{break;}
                 star();
@@ -174,22 +174,22 @@ void Student::out_file(){
 }
 void Professor::out_file(){
     ifstream profile;
-    profile.open("professor.dat",ios::binary|ios::in|ios::app);
+    profile.open("professor.txt",ios::in);
     if(profile.is_open()){
             while(!profile.eof()){
-                profile.read((char*)&this->name,sizeof(this->name));
-                profile.read((char*)&this->sex,sizeof(this->sex));
-                profile.read((char*)&this->identity,sizeof(this->identity));
-                profile.read((char*)&this->birthday,sizeof(this->birthday));
-                profile.read((char*)&this->address,sizeof(this->address));
-                profile.read((char*)&this->age,sizeof(this->age));
-                profile.read((char*)&this->job_number,sizeof(this->job_number));
-                profile.read((char*)&this->apartment,sizeof(this->apartment));
-                profile.read((char*)&this->work_time,sizeof(this->work_time));
-                profile.read((char*)&this->salary,sizeof(this->salary));
-                profile.read((char*)&this->teach_major,sizeof(this->teach_major));
-                profile.read((char*)&this->science,sizeof(this->science));
-                profile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
+                profile>>this->name;
+                profile>>this->sex;
+                profile>>this->identity;
+                profile>>this->birthday;
+                profile>>this->address;
+                profile>>this->age;
+                profile>>this->job_number;
+                profile>>this->apartment;
+                profile>>this->work_time;
+                profile>>this->salary;
+                profile>>this->teach_major;
+                profile>>this->science;
+                profile>>this->num_of_student;
                 if(!profile.eof()){this->show_data();}
                 else{break;}
                 star();
@@ -200,20 +200,20 @@ void Professor::out_file(){
 }
 void Worker::out_file(){
     ifstream worfile;
-    worfile.open("worker.dat",ios::binary|ios::in|ios::app);
+    worfile.open("worker.txt",ios::in);
     if(worfile.is_open()){
             while(!worfile.eof()){
-                worfile.read((char*)&this->name,sizeof(this->name));
-                worfile.read((char*)&this->sex,sizeof(this->sex));
-                worfile.read((char*)&this->identity,sizeof(this->identity));
-                worfile.read((char*)&this->birthday,sizeof(this->birthday));
-                worfile.read((char*)&this->address,sizeof(this->address));
-                worfile.read((char*)&this->age,sizeof(this->age));
-                worfile.read((char*)&this->job_number,sizeof(this->job_number));
-                worfile.read((char*)&this->apartment,sizeof(this->apartment));
-                worfile.read((char*)&this->work_time,sizeof(this->work_time));
-                worfile.read((char*)&this->salary,sizeof(this->salary));
-                worfile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
+                worfile>>this->name;
+                worfile>>this->sex;
+                worfile>>this->identity;
+                worfile>>this->birthday;
+                worfile>>this->address;
+                worfile>>this->age;
+                worfile>>this->job_number;
+                worfile>>this->apartment;
+                worfile>>this->work_time;
+                worfile>>this->salary;
+                worfile>>this->type_of_work;
                 if(!worfile.eof()){this->show_data();}
                 else{break;}
                 star();
@@ -227,18 +227,18 @@ void Student::find_inf(){
     cout<<"Please into Stu_ID:";cin>>stu_ID;
     star();
     fstream ffile;
-    ffile.open("student.dat",ios::in|ios::out|ios::binary|ios::app);
+    ffile.open("student.txt",ios::in);
     int index=0;
-    do{ ffile.read((char*)&this->name,sizeof(this->name));
-        ffile.read((char*)&this->sex,sizeof(this->sex));
-        ffile.read((char*)&this->identity,sizeof(this->identity));
-        ffile.read((char*)&this->birthday,sizeof(this->birthday));
-        ffile.read((char*)&this->address,sizeof(this->address));
-        ffile.read((char*)&this->age,sizeof(this->age));
-        ffile.read((char*)&this->student_ID,sizeof(this->student_ID));
-        ffile.read((char*)&this->dorm,sizeof(this->dorm));
-        ffile.read((char*)&this->major,sizeof(this->major));
-        ffile.read((char*)&this->grade,sizeof(this->grade));
+    do{         ffile>>this->name;
+                ffile>>this->sex;
+                ffile>>this->identity;
+                ffile>>this->birthday;
+                ffile>>this->address;
+                ffile>>this->age;
+                ffile>>this->student_ID;
+                ffile>>this->dorm;
+                ffile>>this->major;
+                ffile>>this->grade;
         if(stu_ID==this->identity)
         {if(!ffile.eof())
         {show_data();}
@@ -252,21 +252,21 @@ void Professor::find_inf(){
     cout<<"Please into pro_ID:";cin>>pro_ID;
     star();
     fstream ffile;
-    ffile.open("professor.dat",ios::in|ios::out|ios::binary|ios::app);
+    ffile.open("professor.txt",ios::in);
     int index=0;
-    do{ ffile.read((char*)&this->name,sizeof(this->name));
-        ffile.read((char*)&this->sex,sizeof(this->sex));
-        ffile.read((char*)&this->identity,sizeof(this->identity));
-        ffile.read((char*)&this->birthday,sizeof(this->birthday));
-        ffile.read((char*)&this->address,sizeof(this->address));
-        ffile.read((char*)&this->age,sizeof(this->age));
-        ffile.read((char*)&this->job_number,sizeof(this->job_number));
-        ffile.read((char*)&this->apartment,sizeof(this->apartment));
-        ffile.read((char*)&this->work_time,sizeof(this->work_time));
-        ffile.read((char*)&this->salary,sizeof(this->salary));
-        ffile.read((char*)&this->teach_major,sizeof(this->teach_major));
-        ffile.read((char*)&this->science,sizeof(this->science));
-        ffile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
+    do{         ffile>>this->name;
+                ffile>>this->sex;
+                ffile>>this->identity;
+                ffile>>this->birthday;
+                ffile>>this->address;
+                ffile>>this->age;
+                ffile>>this->job_number;
+                ffile>>this->apartment;
+                ffile>>this->work_time;
+                ffile>>this->salary;
+                ffile>>this->teach_major;
+                ffile>>this->science;
+                ffile>>this->num_of_student;
         if(pro_ID==this->identity)
         {if(!ffile.eof()){show_data();}
         else{break;}
@@ -281,19 +281,19 @@ void Worker::find_inf(){
     cout<<"Please into wor_ID:";cin>>wor_ID;
     star();
     fstream ffile;
-    ffile.open("worker.dat",ios::in|ios::out|ios::binary|ios::app);
+    ffile.open("worker.txt",ios::in);
     int index=0;
-    do{ ffile.read((char*)&this->name,sizeof(this->name));
-        ffile.read((char*)&this->sex,sizeof(this->sex));
-        ffile.read((char*)&this->identity,sizeof(this->identity));
-        ffile.read((char*)&this->birthday,sizeof(this->birthday));
-        ffile.read((char*)&this->address,sizeof(this->address));
-        ffile.read((char*)&this->age,sizeof(this->age));
-        ffile.read((char*)&this->job_number,sizeof(this->job_number));
-        ffile.read((char*)&this->apartment,sizeof(this->apartment));
-        ffile.read((char*)&this->work_time,sizeof(this->work_time));
-        ffile.read((char*)&this->salary,sizeof(this->salary));
-        ffile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
+    do{          ffile>>this->name;
+               ffile>>this->sex;
+                ffile>>this->identity;
+                ffile>>this->birthday;
+                ffile>>this->address;
+                ffile>>this->age;
+                ffile>>this->job_number;
+                ffile>>this->apartment;
+                ffile>>this->work_time;
+                ffile>>this->salary;
+                ffile>>this->type_of_work;
         if(wor_ID==this->identity)
         {if(!ffile.eof()){show_data();}
         else{break;}
@@ -303,20 +303,20 @@ void Worker::find_inf(){
 void Student::fix_inf(){
     vector<Student> students;
     fstream stufile;
-    stufile.open("student.dat",ios::binary|ios::in|ios::app);
+    stufile.open("student.txt",ios::in);
     if(stufile.is_open()){
             while(!stufile.eof()){
                 Student C;
-                stufile.read((char*)&this->name,sizeof(this->name));
-                stufile.read((char*)&this->sex,sizeof(this->sex));
-                stufile.read((char*)&this->identity,sizeof(this->identity));
-                stufile.read((char*)&this->birthday,sizeof(this->birthday));
-                stufile.read((char*)&this->address,sizeof(this->address));
-                stufile.read((char*)&this->age,sizeof(this->age));
-                stufile.read((char*)&this->student_ID,sizeof(this->student_ID));
-                stufile.read((char*)&this->dorm,sizeof(this->dorm));
-                stufile.read((char*)&this->major,sizeof(this->major));
-                stufile.read((char*)&this->grade,sizeof(this->grade));
+                stufile>>this->name;
+                stufile>>this->sex;
+                stufile>>this->identity;
+                stufile>>this->birthday;
+                stufile>>this->address;
+                stufile>>this->age;
+                stufile>>this->student_ID;
+                stufile>>this->dorm;
+                stufile>>this->major;
+                stufile>>this->grade;
                 if(!stufile.eof()){
                     C.name=this->name;
                     C.sex=this->sex;
@@ -337,7 +337,7 @@ void Student::fix_inf(){
             star();
     }
     else{cout<<"It is error."<<endl;}
-    stufile.open("student.dat",ios::binary|ios::out);
+    stufile.open("student.txt",ios::out);
     stufile.close();
     string stu_ID;
     cout<<"Please input your id which you want to fix:";cin>>stu_ID;
@@ -348,7 +348,7 @@ void Student::fix_inf(){
     for(vector<Student>::iterator s1=students.begin();s1!=students.end();s1++){
         Student C;
         C=*s1;
-		stufile.open("student.dat",ios::binary|ios::app);
+		stufile.open("student.txt",ios::app);
         if(stufile.is_open())
 		{
             if(C.identity==stu_ID)
@@ -364,16 +364,16 @@ void Student::fix_inf(){
                 C.major=Fix.major;
                 C.grade=Fix.grade;
             }
-                stufile.write((char*)&C.name,sizeof(C.name));
-                stufile.write((char*)&C.sex,sizeof(C.sex));
-                stufile.write((char*)&C.identity,sizeof(C.identity));
-                stufile.write((char*)&C.birthday,sizeof(C.birthday));
-                stufile.write((char*)&C.address,sizeof(C.address));
-                stufile.write((char*)&C.age,sizeof(C.age));
-                stufile.write((char*)&C.student_ID,sizeof(C.student_ID));
-                stufile.write((char*)&C.dorm,sizeof(C.dorm));
-                stufile.write((char*)&C.major,sizeof(C.major));
-                stufile.write((char*)&C.grade,sizeof(C.grade));
+                stufile<<C.name;stufile<<endl;
+                stufile<<C.sex;stufile<<endl;
+                stufile<<C.identity;stufile<<endl;
+                stufile<<C.birthday;stufile<<endl;
+                stufile<<C.address;stufile<<endl;
+                stufile<<C.age;stufile<<endl;
+                stufile<<C.student_ID;stufile<<endl;
+                stufile<<C.dorm;stufile<<endl;
+                stufile<<C.major;stufile<<endl;
+                stufile<<C.grade;stufile<<endl;
                 star();
 		}
 		else
@@ -386,23 +386,23 @@ void Student::fix_inf(){
 void Professor::fix_inf(){
     vector<Professor> professors;
     fstream profile;
-    profile.open("professer.dat",ios::binary|ios::in|ios::app);
+    profile.open("professer.txt",ios::in);
     if(profile.is_open()){
             while(!profile.eof()){
                 Professor C;
-                profile.read((char*)&this->name,sizeof(this->name));
-                profile.read((char*)&this->sex,sizeof(this->sex));
-                profile.read((char*)&this->identity,sizeof(this->identity));
-                profile.read((char*)&this->birthday,sizeof(this->birthday));
-                profile.read((char*)&this->address,sizeof(this->address));
-                profile.read((char*)&this->age,sizeof(this->age));
-                profile.read((char*)&this->job_number,sizeof(this->job_number));
-                profile.read((char*)&this->apartment,sizeof(this->apartment));
-                profile.read((char*)&this->work_time,sizeof(this->work_time));
-                profile.read((char*)&this->salary,sizeof(this->salary));
-                profile.read((char*)&this->teach_major,sizeof(this->teach_major));
-                profile.read((char*)&this->science,sizeof(this->science));
-                profile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
+                profile>>this->name;
+                profile>>this->sex;
+                profile>>this->identity;
+                profile>>this->birthday;
+                profile>>this->address;
+                profile>>this->age;
+                profile>>this->job_number;
+                profile>>this->apartment;
+                profile>>this->work_time;
+                profile>>this->salary;
+                profile>>this->teach_major;
+                profile>>this->science;
+                profile>>this->num_of_student;
                 if(!profile.eof()){
                     C.name=this->name;
                     C.sex=this->sex;
@@ -426,7 +426,7 @@ void Professor::fix_inf(){
             star();
     }
     else{cout<<"It is error."<<endl;}
-    profile.open("professor.dat",ios::binary|ios::out);
+    profile.open("professor.txt",ios::out);
     profile.close();
     string pro_ID;
     cout<<"Please input your id which you want to fix:";cin>>pro_ID;
@@ -437,7 +437,7 @@ void Professor::fix_inf(){
     for(vector<Professor>::iterator s1=professors.begin();s1!=professors.end();s1++){
         Professor C;
         C=*s1;
-		profile.open("professor.dat",ios::binary|ios::app);
+		profile.open("professor.txt",ios::app);
         if(profile.is_open())
 		{
             if(C.identity==pro_ID)
@@ -456,19 +456,19 @@ void Professor::fix_inf(){
                 C.science=Fix.science;
                 C.num_of_student=Fix.num_of_student;
             }
-                profile.write((char*)&C.name,sizeof(C.name));
-                profile.write((char*)&C.sex,sizeof(C.sex));
-                profile.write((char*)&C.identity,sizeof(C.identity));
-                profile.write((char*)&C.birthday,sizeof(C.birthday));
-                profile.write((char*)&C.address,sizeof(C.address));
-                profile.write((char*)&C.age,sizeof(C.age));
-                profile.write((char*)&C.job_number,sizeof(C.job_number));
-                profile.write((char*)&C.apartment,sizeof(C.apartment));
-                profile.write((char*)&C.work_time,sizeof(C.work_time));
-                profile.write((char*)&C.salary,sizeof(C.salary));
-                profile.write((char*)&C.teach_major,sizeof(C.teach_major));
-                profile.write((char*)&C.science,sizeof(C.science));
-                profile.write((char*)&C.num_of_student,sizeof(C.num_of_student));
+                profile<<C.name;profile<<endl;
+                profile<<C.sex;profile<<endl;
+                profile<<C.identity;profile<<endl;
+                profile<<C.birthday;profile<<endl;
+                profile<<C.address;profile<<endl;
+                profile<<C.age;profile<<endl;
+                profile<<C.job_number;profile<<endl;
+                profile<<C.apartment;profile<<endl;
+                profile<<C.work_time;profile<<endl;
+                profile<<C.salary;profile<<endl;
+                profile<<C.teach_major;profile<<endl;
+                profile<<C.science;profile<<endl;
+                profile<<C.num_of_student;profile<<endl;
                 star();
 		}
 		else
@@ -481,21 +481,21 @@ void Professor::fix_inf(){
 void Worker::fix_inf(){
     vector<Worker> workers;
     fstream worfile;
-    worfile.open("worker.dat",ios::binary|ios::in|ios::app);
+    worfile.open("worker.txt",ios::in);
     if(worfile.is_open()){
             while(!worfile.eof()){
                 Worker C;
-                worfile.read((char*)&this->name,sizeof(this->name));
-                worfile.read((char*)&this->sex,sizeof(this->sex));
-                worfile.read((char*)&this->identity,sizeof(this->identity));
-                worfile.read((char*)&this->birthday,sizeof(this->birthday));
-                worfile.read((char*)&this->address,sizeof(this->address));
-                worfile.read((char*)&this->age,sizeof(this->age));
-                worfile.read((char*)&this->job_number,sizeof(this->job_number));
-                worfile.read((char*)&this->apartment,sizeof(this->apartment));
-                worfile.read((char*)&this->work_time,sizeof(this->work_time));
-                worfile.read((char*)&this->salary,sizeof(this->salary));
-                worfile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
+                worfile>>this->name;
+                worfile>>this->sex;
+                worfile>>this->identity;
+                worfile>>this->birthday;
+                worfile>>this->address;
+                worfile>>this->age;
+                worfile>>this->job_number;
+                worfile>>this->apartment;
+                worfile>>this->work_time;
+                worfile>>this->salary;
+                worfile>>this->type_of_work;
                 if(!worfile.eof()){
                     C.name=this->name;
                     C.sex=this->sex;
@@ -517,7 +517,7 @@ void Worker::fix_inf(){
             star();
     }
     else{cout<<"It is error."<<endl;}
-    worfile.open("worker.dat",ios::binary|ios::out);
+    worfile.open("worker.txt",ios::out);
     worfile.close();
     string wor_ID;
     cout<<"Please input your id which you want to fix:";cin>>wor_ID;
@@ -528,7 +528,7 @@ void Worker::fix_inf(){
     for(vector<Worker>::iterator s1=workers.begin();s1!=workers.end();s1++){
         Worker C;
         C=*s1;
-		worfile.open("worker.dat",ios::binary|ios::app);
+		worfile.open("worker.txt",ios::app);
         if(worfile.is_open())
 		{
             if(C.identity==wor_ID)
@@ -545,17 +545,17 @@ void Worker::fix_inf(){
                 C.salary=Fix.salary;
                 C.type_of_work=Fix.type_of_work;
             }
-                worfile.write((char*)&C.name,sizeof(C.name));
-                worfile.write((char*)&C.sex,sizeof(C.sex));
-                worfile.write((char*)&C.identity,sizeof(C.identity));
-                worfile.write((char*)&C.birthday,sizeof(C.birthday));
-                worfile.write((char*)&C.address,sizeof(C.address));
-                worfile.write((char*)&C.age,sizeof(C.age));
-                worfile.write((char*)&C.job_number,sizeof(C.job_number));
-                worfile.write((char*)&C.apartment,sizeof(C.apartment));
-                worfile.write((char*)&C.work_time,sizeof(C.work_time));
-                worfile.write((char*)&C.salary,sizeof(C.salary));
-                worfile.write((char*)&C.type_of_work,sizeof(C.type_of_work));
+                worfile<<C.name;worfile<<endl;
+                worfile<<C.sex;worfile<<endl;
+                worfile<<C.identity;worfile<<endl;
+                worfile<<C.birthday;worfile<<endl;
+                worfile<<C.address;worfile<<endl;
+                worfile<<C.age;worfile<<endl;
+                worfile<<C.job_number;worfile<<endl;
+                worfile<<C.apartment;worfile<<endl;
+                worfile<<C.work_time;worfile<<endl;
+                worfile<<C.salary;worfile<<endl;
+                worfile<<C.type_of_work;
                 star();
 		}
 		else
@@ -568,20 +568,20 @@ void Worker::fix_inf(){
 void Student::delete_one(){
     vector<Student> students;
     fstream stufile;
-    stufile.open("student.dat",ios::binary|ios::in|ios::app);
+    stufile.open("student.txt",ios::in);
     if(stufile.is_open()){
             while(!stufile.eof()){
                 Student C;
-                stufile.read((char*)&this->name,sizeof(this->name));
-                stufile.read((char*)&this->sex,sizeof(this->sex));
-                stufile.read((char*)&this->identity,sizeof(this->identity));
-                stufile.read((char*)&this->birthday,sizeof(this->birthday));
-                stufile.read((char*)&this->address,sizeof(this->address));
-                stufile.read((char*)&this->age,sizeof(this->age));
-                stufile.read((char*)&this->student_ID,sizeof(this->student_ID));
-                stufile.read((char*)&this->dorm,sizeof(this->dorm));
-                stufile.read((char*)&this->major,sizeof(this->major));
-                stufile.read((char*)&this->grade,sizeof(this->grade));
+                stufile>>this->name;
+                stufile>>this->sex;
+                stufile>>this->identity;
+                stufile>>this->birthday;
+                stufile>>this->address;
+                stufile>>this->age;
+                stufile>>this->student_ID;
+                stufile>>this->dorm;
+                stufile>>this->major;
+                stufile>>this->grade;
                 if(!stufile.eof()){
                     C.name=this->name;
                     C.sex=this->sex;
@@ -596,37 +596,34 @@ void Student::delete_one(){
                     }
                 else{break;}
                 students.push_back(C);
-                star();
             }
             stufile.close();
-            star();
     }
     else{cout<<"It is error."<<endl;}
-    stufile.open("student.dat",ios::binary|ios::out);
+    stufile.open("student.txt",ios::out);
     stufile.close();
     string stu_ID;
-    cout<<"Please input your id which you want to clean:";cin>>stu_ID;
+    star();cout<<"Please input your id which you want to clean:";cin>>stu_ID;star();
     for(vector<Student>::iterator s1=students.begin();s1!=students.end();s1++){
         Student C;
         C=*s1;
-		stufile.open("student.dat",ios::binary|ios::app);
+		stufile.open("student.txt",ios::app);
         if(stufile.is_open())
 		{
             if(C.identity!=stu_ID)
 			{
-                stufile.write((char*)&C.name,sizeof(C.name));
-                stufile.write((char*)&C.sex,sizeof(C.sex));
-                stufile.write((char*)&C.identity,sizeof(C.identity));
-                stufile.write((char*)&C.birthday,sizeof(C.birthday));
-                stufile.write((char*)&C.address,sizeof(C.address));
-                stufile.write((char*)&C.age,sizeof(C.age));
-                stufile.write((char*)&C.student_ID,sizeof(C.student_ID));
-                stufile.write((char*)&C.dorm,sizeof(C.dorm));
-                stufile.write((char*)&C.major,sizeof(C.major));
-                stufile.write((char*)&C.grade,sizeof(C.grade));
-                star();
+                stufile<<this->name;stufile<<endl;
+                stufile<<this->sex;stufile<<endl;
+                stufile<<this->identity;stufile<<endl;
+                stufile<<this->birthday;stufile<<endl;
+                stufile<<this->address;stufile<<endl;
+                stufile<<this->age;stufile<<endl;
+                stufile<<this->student_ID;stufile<<endl;
+                stufile<<this->dorm;stufile<<endl;
+                stufile<<this->major;stufile<<endl;
+                stufile<<this->grade;stufile<<endl;
             }
-            else{cout<<"Delete."<<endl;}
+            else{cout<<"Delete."<<endl;star();}
 		}
 		else
 		{
@@ -638,23 +635,23 @@ void Student::delete_one(){
 void Professor::delete_one(){
     vector<Professor> professors;
     fstream profile;
-    profile.open("professer.dat",ios::binary|ios::in|ios::app);
+    profile.open("professer.txt",ios::in);
     if(profile.is_open()){
             while(!profile.eof()){
                 Professor C;
-                profile.read((char*)&this->name,sizeof(this->name));
-                profile.read((char*)&this->sex,sizeof(this->sex));
-                profile.read((char*)&this->identity,sizeof(this->identity));
-                profile.read((char*)&this->birthday,sizeof(this->birthday));
-                profile.read((char*)&this->address,sizeof(this->address));
-                profile.read((char*)&this->age,sizeof(this->age));
-                profile.read((char*)&this->job_number,sizeof(this->job_number));
-                profile.read((char*)&this->apartment,sizeof(this->apartment));
-                profile.read((char*)&this->work_time,sizeof(this->work_time));
-                profile.read((char*)&this->salary,sizeof(this->salary));
-                profile.read((char*)&this->teach_major,sizeof(this->teach_major));
-                profile.read((char*)&this->science,sizeof(this->science));
-                profile.read((char*)&this->num_of_student,sizeof(this->num_of_student));
+                profile>>this->name;
+                profile>>this->sex;
+                profile>>this->identity;
+                profile>>this->birthday;
+                profile>>this->address;
+                profile>>this->age;
+                profile>>this->job_number;
+                profile>>this->apartment;
+                profile>>this->work_time;
+                profile>>this->salary;
+                profile>>this->teach_major;
+                profile>>this->science;
+                profile>>this->num_of_student;
                 if(!profile.eof()){
                     C.name=this->name;
                     C.sex=this->sex;
@@ -672,44 +669,38 @@ void Professor::delete_one(){
                     }
                 else{break;}
                 professors.push_back(C);
-                star();
             }
             profile.close();
             star();
     }
     else{cout<<"It is error."<<endl;}
-    profile.open("professor.dat",ios::binary|ios::out);
+    profile.open("professor.txt",ios::out);
     profile.close();
     string pro_ID;
-    cout<<"Please input your id which you want to fix:";cin>>pro_ID;
-    cout<<"Input what you want to fix->"<<endl;
-    Professor Fix;
-    Fix.get_data();
-
+    star();cout<<"Please input your id which you want to fix:";cin>>pro_ID;star();
     for(vector<Professor>::iterator s1=professors.begin();s1!=professors.end();s1++){
         Professor C;
         C=*s1;
-		profile.open("professor.dat",ios::binary|ios::app);
+		profile.open("professor.txt",ios::app);
         if(profile.is_open())
 		{
             if(C.identity!=pro_ID)
 			{
-                profile.write((char*)&C.name,sizeof(C.name));
-                profile.write((char*)&C.sex,sizeof(C.sex));
-                profile.write((char*)&C.identity,sizeof(C.identity));
-                profile.write((char*)&C.birthday,sizeof(C.birthday));
-                profile.write((char*)&C.address,sizeof(C.address));
-                profile.write((char*)&C.age,sizeof(C.age));
-                profile.write((char*)&C.job_number,sizeof(C.job_number));
-                profile.write((char*)&C.apartment,sizeof(C.apartment));
-                profile.write((char*)&C.work_time,sizeof(C.work_time));
-                profile.write((char*)&C.salary,sizeof(C.salary));
-                profile.write((char*)&C.teach_major,sizeof(C.teach_major));
-                profile.write((char*)&C.science,sizeof(C.science));
-                profile.write((char*)&C.num_of_student,sizeof(C.num_of_student));
-                star();
+                profile<<this->name;profile<<endl;
+                profile<<this->sex;profile<<endl;
+                profile<<this->identity;profile<<endl;
+                profile<<this->birthday;profile<<endl;
+                profile<<this->address;profile<<endl;
+                profile<<this->age;profile<<endl;
+                profile<<this->job_number;profile<<endl;
+                profile<<this->apartment;profile<<endl;
+                profile<<this->work_time;profile<<endl;
+                profile<<this->salary;profile<<endl;
+                profile<<this->teach_major;profile<<endl;
+                profile<<this->science;profile<<endl;
+                profile<<this->num_of_student;profile<<endl;
             }
-            else{cout<<"Delete."<<endl;}
+            else{cout<<"Delete."<<endl;star();}
 		}
 		else
 		{
@@ -721,21 +712,21 @@ void Professor::delete_one(){
 void Worker::delete_one(){
     vector<Worker> workers;
     fstream worfile;
-    worfile.open("worker.dat",ios::binary|ios::in|ios::app);
+    worfile.open("worker.txt",ios::in);
     if(worfile.is_open()){
             while(!worfile.eof()){
                 Worker C;
-                worfile.read((char*)&this->name,sizeof(this->name));
-                worfile.read((char*)&this->sex,sizeof(this->sex));
-                worfile.read((char*)&this->identity,sizeof(this->identity));
-                worfile.read((char*)&this->birthday,sizeof(this->birthday));
-                worfile.read((char*)&this->address,sizeof(this->address));
-                worfile.read((char*)&this->age,sizeof(this->age));
-                worfile.read((char*)&this->job_number,sizeof(this->job_number));
-                worfile.read((char*)&this->apartment,sizeof(this->apartment));
-                worfile.read((char*)&this->work_time,sizeof(this->work_time));
-                worfile.read((char*)&this->salary,sizeof(this->salary));
-                worfile.read((char*)&this->type_of_work,sizeof(this->type_of_work));
+                worfile>>this->name;
+                worfile>>this->sex;
+                worfile>>this->identity;
+                worfile>>this->birthday;
+                worfile>>this->address;
+                worfile>>this->age;
+                worfile>>this->job_number;
+                worfile>>this->apartment;
+                worfile>>this->work_time;
+                worfile>>this->salary;
+                worfile>>this->type_of_work;
                 if(!worfile.eof()){
                     C.name=this->name;
                     C.sex=this->sex;
@@ -751,42 +742,37 @@ void Worker::delete_one(){
                     }
                 else{break;}
                 workers.push_back(C);
-                star();
             }
             worfile.close();
             star();
     }
     else{cout<<"It is error."<<endl;}
-    worfile.open("worker.dat",ios::binary|ios::out);
+    worfile.open("worker.txt",ios::out);
     worfile.close();
     string wor_ID;
-    cout<<"Please input your id which you want to fix:";cin>>wor_ID;
-    cout<<"Input what you want to fix->"<<endl;
-    Worker Fix;
-    Fix.get_data();
+    star();cout<<"Please input your id which you want to fix:";cin>>wor_ID;star();
 
     for(vector<Worker>::iterator s1=workers.begin();s1!=workers.end();s1++){
         Worker C;
         C=*s1;
-		worfile.open("worker.dat",ios::binary|ios::app);
+		worfile.open("worker.txt",ios::app);
         if(worfile.is_open())
 		{
             if(C.identity==wor_ID)
 			{
-                worfile.write((char*)&C.name,sizeof(C.name));
-                worfile.write((char*)&C.sex,sizeof(C.sex));
-                worfile.write((char*)&C.identity,sizeof(C.identity));
-                worfile.write((char*)&C.birthday,sizeof(C.birthday));
-                worfile.write((char*)&C.address,sizeof(C.address));
-                worfile.write((char*)&C.age,sizeof(C.age));
-                worfile.write((char*)&C.job_number,sizeof(C.job_number));
-                worfile.write((char*)&C.apartment,sizeof(C.apartment));
-                worfile.write((char*)&C.work_time,sizeof(C.work_time));
-                worfile.write((char*)&C.salary,sizeof(C.salary));
-                worfile.write((char*)&C.type_of_work,sizeof(C.type_of_work));
-                star();
+                worfile<<this->name;worfile<<endl;
+                worfile<<this->sex;worfile<<endl;
+                worfile<<this->identity;worfile<<endl;
+                worfile<<this->birthday;worfile<<endl;
+                worfile<<this->address;worfile<<endl;
+                worfile<<this->age;worfile<<endl;
+                worfile<<this->job_number;worfile<<endl;
+                worfile<<this->apartment;worfile<<endl;
+                worfile<<this->work_time;worfile<<endl;
+                worfile<<this->salary;worfile<<endl;
+                worfile<<this->type_of_work;worfile<<endl;
             }
-            else{cout<<"Delete."<<endl;}
+            else{cout<<"Delete."<<endl;star();}
 		}
 		else
 		{
@@ -816,7 +802,6 @@ void Student::dective(){
                         this->dective();
                         break;//修資料
                 case 4:cout<<"EXECUTE Delete."<<endl;
-                        star();
                         this->delete_one();
                         this->EXECUTEPCUI();
                         this->dective();
@@ -852,7 +837,6 @@ void Professor::dective(){
                             this->dective();
                             break;//修資料
                     case 4:cout<<"EXECUTE Delete."<<endl;
-                            star();
                         this->delete_one();
                         this->EXECUTEPCUI();
                         this->dective();
@@ -889,7 +873,6 @@ void Worker::dective(){
                             this->dective();
                         break;//修資料
                     case 4:cout<<"EXECUTE Delete."<<endl;
-                            star();
                         this->delete_one();
                         this->EXECUTEPCUI();
                         this->dective();

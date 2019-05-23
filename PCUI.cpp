@@ -1,5 +1,7 @@
 #include<iostream>
 #include<cstdlib>
+#include<string>
+#include<typeinfo>
 #include"PCUI.h"
 #include"AUI.h"
 #include"Record.h"
@@ -7,6 +9,7 @@
 using namespace std;
 fstream Stu,Pro,Wor;
 void star();
+
 void PersonalChoiceUI::show(){
         cout<<"1.Student"<<endl;
         cout<<"2.Professor"<<endl;
@@ -14,10 +17,16 @@ void PersonalChoiceUI::show(){
         cout<<"4.Quit"<<endl;
         cout<<"Please input(1-4):";
 }
+
 void PersonalChoiceUI::choice(){
+    try{
         (cin>>a).get();cout<<endl;
         star();
+        if(a>4||a<1){cout<<"it is wrong."<<endl;star();throw a;}
+    }
+    catch(int a){PersonalChoiceUI the_next;the_next.EXECUTEPCUI();}
 }
+
 Student B;
 Professor C;
 Worker D;

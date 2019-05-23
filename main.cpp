@@ -11,7 +11,6 @@ using namespace std;
 int main(){
     PersonalChoiceUI A;
     A.EXECUTEPCUI();
-
     return 0;
 }
 
